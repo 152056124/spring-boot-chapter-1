@@ -1,0 +1,22 @@
+#使用-xxx环境配置
+spring:
+  profiles:
+    active: dev
+
+#系统自带配置
+server:
+  port: 8081
+
+
+#随机数格式
+com:
+  value:  ${random.value}
+  int:  ${random.int}
+
+#自定义配置
+my:
+  name: ztc
+  sex:  男
+  desc: ${my.name}的性别是 ${my.sex}
+
+
