@@ -1,0 +1,47 @@
+配置swagger2
+    1.pom添加依赖
+
+        <properties>
+                <swagger.version>2.8.0</swagger.version>
+        </properties>
+
+        <dependency>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-swagger2</artifactId>
+                    <version>${swagger.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-bean-validators</artifactId>
+                    <version>${swagger.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-swagger-ui</artifactId>
+                    <version>${swagger.version}</version>
+        </dependency>
+
+    2.添加配置类(SwaggerConfig)
+        @Configuration
+        @EnableSwagger2
+        public class SwaggerConfig {
+
+        	@Bean
+        	public Docket docket() {
+        		return new Docket(DocumentationType.SWAGGER_2).groupName("swagger接口文档")
+        				.apiInfo(new ApiInfoBuilder().title("swagger接口文档")
+        						.contact(new Contact("ztc", "", "1731468109@qq.com")).version("1.0").build())
+        				.select().paths(PathSelectors.any()).build();
+        	}
+        }
+
+    3.使用：
+        controller
+            类上可加    @Api
+            方法上可加  @ApiOperation(value = "大列表", notes = "小说明")
+        model
+            类上可加    @ApiModel(description = "用户实体")
+            字段上可加  @ApiModelProperty("用户年龄")
+
+
+
