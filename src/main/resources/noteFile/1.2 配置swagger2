@@ -42,6 +42,8 @@
         model
             类上可加    @ApiModel(description = "用户实体")
             字段上可加  @ApiModelProperty("用户年龄")
+            
+    4.启动项目，访问:http://localhost:8080/swagger-ui.html
 
 
 
